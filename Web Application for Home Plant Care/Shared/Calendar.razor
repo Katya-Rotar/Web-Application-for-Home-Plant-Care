@@ -1,0 +1,59 @@
+﻿@using System.Globalization;
+
+<span class="desktop-home-text119">Календар</span>
+<div class="desktop-home-frame427319611">
+    <div class="desktop-home-frame427319603">
+        @foreach(var day in daysOfWeek){
+            <span class="desktop-home-text020"><span>@day</span></span>
+        }
+    </div>
+    <div class="desktop-home-frame427319606">
+        @for (int week = 0; week < 6; week++) 
+        {
+            <div class="desktop-home-frame427319604">
+                @for (int day = 0; day < 7; day++)
+                {
+                    int currentDay = GetDayForCell(week, day);
+                    <div class="desktop-home-text030 @(currentDay != 0 ? GetDayClass(currentDay) : "")">
+                        @if (currentDay != 0)
+                        {
+                            @currentDay
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+<ReminderCalendar />
+
+
+@code {
+    private int currentYear = DateTime.Now.Year;
+    private int currentMonth = DateTime.Now.Month;
+    private int CurrentDay { get; set; }
+    private DateTime firstDayOfMonth;
+    private string[] daysOfWeek = new string[] { "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд" };
+    private int daysInMonth;
+
+    protected override void OnInitialized()
+    {
+        firstDayOfMonth = new DateTime(currentYear, currentMonth, 1);
+        CurrentDay = DateTime.Now.Day;
+        daysInMonth = DateTime.DaysInMonth(currentYear, currentMonth);
+    }
+
+    private int GetDayForCell(int week, int dayOfWeek)
+    {
+        // Визначаємо день місяця для відповідної комірки календаря
+        int day = (week * 7) + dayOfWeek - ((int)firstDayOfMonth.DayOfWeek == 0 ? 6 : (int)firstDayOfMonth.DayOfWeek - 1) + 1;
+        return (day > 0 && day <= daysInMonth) ? day : 0;
+    }
+
+    private string GetDayClass(int day)
+    {
+        // Повертаємо клас для виділення поточного дня
+        return day == CurrentDay ? "highlight" : "";
+    }
+}

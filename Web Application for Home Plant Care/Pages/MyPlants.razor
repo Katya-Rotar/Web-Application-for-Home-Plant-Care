@@ -1,0 +1,47 @@
+﻿@page "/plants"
+@using Web_Application_for_Home_Plant_Care.Models
+@using Web_Application_for_Home_Plant_Care.Services.Contracts
+@inject IPlantService PlantService
+
+<div class="desktop-plants-group1392">
+    <span class="desktop-plants-text137">
+        <span>Ваші домашні рослини</span>
+    </span>
+    <img src="svg/vector11126-n251h.svg"
+         alt="Vector11747"
+         class="desktop-plants-vector1" />
+    <img src="svg/vector21126-u7zr.svg"
+         alt="Vector21747"
+         class="desktop-plants-vector2" />
+</div>
+
+<div class="desktop-plants-group1397">
+    @if (plants == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        @foreach (var plant in plants)
+        {
+            <div class="desktop-plants-group13">
+                <img src="svg/rectangle61745-xsas.svg"
+                     alt="Rectangle61745"
+                     class="desktop-plants-rectangle6" />
+                <img src="@plant.PlantType.PlantTypePhoto" class="desktop-plants-rose-gold-feminine-calligraphy-monogram-logo152" alt="@plant.PlantName">
+                <h5 class="desktop-plants-text">@plant.PlantName</h5>
+                <p class="desktop-plants-text002">@plant.PlantType.PlantTypeName</p>
+            </div>
+        }
+    }
+</div>
+
+
+@code {
+    private IEnumerable<Plant>? plants;
+
+    protected override async Task OnInitializedAsync()
+    {
+        plants = await PlantService.GetPlants();
+    }
+}

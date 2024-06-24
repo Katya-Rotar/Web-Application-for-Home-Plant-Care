@@ -1,0 +1,42 @@
+﻿@using Web_Application_for_Home_Plant_Care.Models
+@using Web_Application_for_Home_Plant_Care.Services
+@inject ReminderServices ReminderServices
+
+<div class="desktop-home-frame427319615">
+    <span class="desktop-home-text091">
+        <span>Догляд за рослинами</span>
+    </span>
+    <NavLink href="" class="desktop-home-text093">
+        <span>більше</span>
+    </NavLink>
+</div>
+
+<div class="desktop-home-frame427319616">
+    @if (reminder == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        @foreach (var reminders in reminder)
+        {
+            <div class="desktop-home-frame427319619">
+                <span class="desktop-home-text099"><span>@reminders.Plant.PlantName</span></span>
+                <span class="desktop-home-text097"><span>@reminders.ReminderType</span></span>
+                <span class="desktop-home-text095">
+                    <span>@reminders.ReminderDate.ToString("dd.MM.yyyy")</span>
+                </span>
+
+            </div>
+        }
+    }
+</div>
+
+@code {
+    private IEnumerable<Reminder>? reminder;
+
+    protected override async Task OnInitializedAsync()
+    {
+        reminder = await ReminderServices.GetReminder();
+    }
+}

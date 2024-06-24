@@ -1,29 +1,15 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Web Application</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
+﻿<div class="desktop-home-group18">
+    <NavLink href="/">
+        <img src="svg/home24dpfill0wght400grad0opsz2411744-6ods.svg" class="desktop-home-home24dp-fill0wght400grad0opsz241" />
+    </NavLink>
 </div>
-
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-    </nav>
+<div class="desktop-home-group181">
+    <NavLink href="/plants">
+        <img src="svg/list24dpfill0wght400grad0opsz2419150-29yk.svg" class="desktop-home-list24dp-fill0wght400grad0opsz241" />
+    </NavLink>
 </div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+<div class="desktop-home-group28">
+    <NavLink href="/addPlant">
+        <img src="svg/add24dpfill0wght400grad0opsz2419160-jwph.svg" class="desktop-home-add24dp-fill0wght400grad0opsz241" />
+    </NavLink>
+</div>

@@ -9,10 +9,10 @@ using Web_Application_for_Home_Plant_Care.Models;
 
 #nullable disable
 
-namespace Web_Application_for_Home_Plant_Care.Migrations
+namespace HomePlantCareApi.Migrations
 {
     [DbContext(typeof(PlantDbContext))]
-    [Migration("20240619091155_InitialCreate")]
+    [Migration("20240626083201_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -64,10 +64,6 @@ namespace Web_Application_for_Home_Plant_Care.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CareID"));
-
-                    b.Property<string>("AdditionalCareInformation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CareDate")
                         .HasColumnType("datetime2");
@@ -137,10 +133,6 @@ namespace Web_Application_for_Home_Plant_Care.Migrations
 
                     b.Property<DateTime>("ReminderDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ReminderName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReminderType")
                         .IsRequired()

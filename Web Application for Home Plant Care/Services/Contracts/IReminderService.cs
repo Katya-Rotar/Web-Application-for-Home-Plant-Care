@@ -2,8 +2,8 @@
 
 namespace Web_Application_for_Home_Plant_Care.Services.Contracts
 {
-    public interface IPlantService
+    public interface IReminderService
     {
-        Task<IEnumerable<PlantDto>> GetPlants();
+        Task<IEnumerable<ReminderDto>> GetReminders();
     }
 }

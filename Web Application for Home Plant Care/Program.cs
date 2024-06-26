@@ -4,17 +4,19 @@ using Web_Application_for_Home_Plant_Care.Services.Contracts;
 using Web_Application_for_Home_Plant_Care.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpClient<IPlantService, PlantService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7133/");
+});
+
+builder.Services.AddHttpClient<IReminderService, ReminderService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7133/");
+});
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-
-builder.Services.AddDbContextPool<PlantDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddScoped<IPlantService, PlantServices>();
-
-builder.Services.AddScoped<ReminderServices>();
 
 var app = builder.Build();
 

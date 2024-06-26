@@ -1,11 +1,16 @@
-﻿namespace Web_Application_for_Home_Plant_Care.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HomePlantCareModels.Dtos
 {
-    public class Reminder
+    public class ReminderDto
     {
         public int ReminderID { get; set; }
         public int PlantID { get; set; }
-        public Plant Plant { get; set; }
-        public string ReminderName { get; set; }
+        public string PlantName { get; set; }
         public DateTime ReminderDate { get; set; }
         public string ReminderType { get; set; }
         public bool IsCompleted { get; set; }

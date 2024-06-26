@@ -1,4 +1,5 @@
 ﻿@page "/plants"
+@using HomePlantCareModels.Dtos;
 @using Web_Application_for_Home_Plant_Care.Models
 @using Web_Application_for_Home_Plant_Care.Services.Contracts
 @inject IPlantService PlantService
@@ -28,9 +29,9 @@
                 <img src="svg/rectangle61745-xsas.svg"
                      alt="Rectangle61745"
                      class="desktop-plants-rectangle6" />
-                <img src="@plant.PlantType.PlantTypePhoto" class="desktop-plants-rose-gold-feminine-calligraphy-monogram-logo152" alt="@plant.PlantName">
+                <img src="@plant.PlantTypePhoto" class="desktop-plants-rose-gold-feminine-calligraphy-monogram-logo152" alt="@plant.PlantName">
                 <h5 class="desktop-plants-text">@plant.PlantName</h5>
-                <p class="desktop-plants-text002">@plant.PlantType.PlantTypeName</p>
+                <p class="desktop-plants-text002">@plant.PlantTypeName</p>
             </div>
         }
     }
@@ -38,7 +39,7 @@
 
 
 @code {
-    private IEnumerable<Plant>? plants;
+    private IEnumerable<PlantDto>? plants;
 
     protected override async Task OnInitializedAsync()
     {

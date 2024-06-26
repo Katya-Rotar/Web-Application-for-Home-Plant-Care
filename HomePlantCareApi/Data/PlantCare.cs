@@ -7,6 +7,5 @@
         public Plant Plant { get; set; }
         public DateTime CareDate { get; set; }
         public string CareType { get; set; }
-        public string AdditionalCareInformation { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Web_Application_for_Home_Plant_Care.Migrations
+namespace HomePlantCareApi.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -60,8 +60,7 @@ namespace Web_Application_for_Home_Plant_Care.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlantID = table.Column<int>(type: "int", nullable: false),
                     CareDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CareType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AdditionalCareInformation = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CareType = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -81,7 +80,6 @@ namespace Web_Application_for_Home_Plant_Care.Migrations
                     ReminderID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlantID = table.Column<int>(type: "int", nullable: false),
-                    ReminderName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReminderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ReminderType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsCompleted = table.Column<bool>(type: "bit", nullable: false)

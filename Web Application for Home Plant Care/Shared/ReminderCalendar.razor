@@ -1,6 +1,8 @@
-﻿@using Web_Application_for_Home_Plant_Care.Models
+﻿@using HomePlantCareModels.Dtos;
+@using Web_Application_for_Home_Plant_Care.Models
 @using Web_Application_for_Home_Plant_Care.Services
-@inject ReminderServices ReminderServices
+@using Web_Application_for_Home_Plant_Care.Services.Contracts;
+@inject IReminderService ReminderService
 
 <div class="desktop-home-frame427319615">
     <span class="desktop-home-text091">
@@ -21,7 +23,7 @@
         @foreach (var reminders in reminder)
         {
             <div class="desktop-home-frame427319619">
-                <span class="desktop-home-text099"><span>@reminders.Plant.PlantName</span></span>
+                <span class="desktop-home-text099"><span>@reminders.PlantName</span></span>
                 <span class="desktop-home-text097"><span>@reminders.ReminderType</span></span>
                 <span class="desktop-home-text095">
                     <span>@reminders.ReminderDate.ToString("dd.MM.yyyy")</span>
@@ -33,10 +35,10 @@
 </div>
 
 @code {
-    private IEnumerable<Reminder>? reminder;
+    private IEnumerable<ReminderDto>? reminder;
 
     protected override async Task OnInitializedAsync()
     {
-        reminder = await ReminderServices.GetReminder();
+        reminder = await ReminderService.GetReminders();
     }
 }

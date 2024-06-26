@@ -1,14 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HomePlantCareApi.Repositories.Contract;
+using Microsoft.EntityFrameworkCore;
 using Web_Application_for_Home_Plant_Care.Models;
-using Web_Application_for_Home_Plant_Care.Services.Contracts;
 
-namespace Web_Application_for_Home_Plant_Care.Services
+namespace HomePlantCareApi.Repositories
 {
-    public class PlantServices : IPlantService
+    public class PlantRepository : IPlantRepository
     {
         private readonly PlantDbContext plantDbContext;
 
-        public PlantServices(PlantDbContext plantDbContext)
+        public PlantRepository(PlantDbContext plantDbContext)
         {
             this.plantDbContext = plantDbContext;
         }

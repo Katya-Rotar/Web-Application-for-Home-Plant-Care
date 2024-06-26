@@ -40,6 +40,7 @@ namespace Web_Application_for_Home_Plant_Care.Models
                 .WithMany(p => p.Reminders)
                 .HasForeignKey(r => r.PlantID);
             });
+
             modelBuilder.Entity<PlantType>(entity => 
             {
                 entity.HasKey(t => t.PlantTypeID);

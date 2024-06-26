@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web Application for Home Plant Care", "Web Application for Home Plant Care\Web Application for Home Plant Care.csproj", "{8838C953-EE05-484E-93C7-F27B191036EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomePlantCareApi", "HomePlantCareApi\HomePlantCareApi.csproj", "{5D15CF21-DA60-4AB4-AC22-286E05B705BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomePlantCareModels", "HomePlantCareBll\HomePlantCareModels.csproj", "{71AA21D2-A398-4E1A-B96B-F8E5E8ADE0AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8838C953-EE05-484E-93C7-F27B191036EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8838C953-EE05-484E-93C7-F27B191036EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8838C953-EE05-484E-93C7-F27B191036EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D15CF21-DA60-4AB4-AC22-286E05B705BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D15CF21-DA60-4AB4-AC22-286E05B705BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D15CF21-DA60-4AB4-AC22-286E05B705BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D15CF21-DA60-4AB4-AC22-286E05B705BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71AA21D2-A398-4E1A-B96B-F8E5E8ADE0AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71AA21D2-A398-4E1A-B96B-F8E5E8ADE0AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71AA21D2-A398-4E1A-B96B-F8E5E8ADE0AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71AA21D2-A398-4E1A-B96B-F8E5E8ADE0AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

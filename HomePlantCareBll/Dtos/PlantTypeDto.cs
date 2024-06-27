@@ -14,6 +14,7 @@ namespace HomePlantCareModels.Dtos
         public int WateringFrequency { get; set; }
         public int TransplantFrequency { get; set; }
         public string TemperatureRequirements { get; set; }
+        public string PlantDescription { get; set; }
         public string SoilType { get; set; }
     }
 }

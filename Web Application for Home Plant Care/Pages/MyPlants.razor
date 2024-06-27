@@ -25,14 +25,14 @@
     {
         @foreach (var plant in plants)
         {
-            <div class="desktop-plants-group13">
+            <NavLink href="@($"plant/{plant.PlantID}")" class="desktop-plants-group13">
                 <img src="svg/rectangle61745-xsas.svg"
                      alt="Rectangle61745"
                      class="desktop-plants-rectangle6" />
                 <img src="@plant.PlantTypePhoto" class="desktop-plants-rose-gold-feminine-calligraphy-monogram-logo152" alt="@plant.PlantName">
                 <h5 class="desktop-plants-text">@plant.PlantName</h5>
                 <p class="desktop-plants-text002">@plant.PlantTypeName</p>
-            </div>
+            </NavLink>
         }
     }
 </div>

@@ -1,0 +1,93 @@
+﻿@page "/plant/{plantId:int}"
+@using HomePlantCareModels.Dtos;
+@using Web_Application_for_Home_Plant_Care.Services.Contracts;
+@inject IPlantService PlantService
+@inject IPlantTypeService PlantTypeService
+
+
+@if (plant == null || plantType == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="desktop-plant-group30">
+        <img src="images/rectangle91785-9sm0k-900w.png"
+             alt="Rectangle91785"
+             class="desktop-plant-rectangle9" />
+        <img src="@plantType.PlantTypePhoto" alt="@plant.PlantName" class="desktop-plant-photo" />
+        <div class="desktop-plant-group1402">
+            <h3 class="desktop-plant-text107">@plant.PlantName</h3>
+            <h3 class="desktop-plant-text105">@plantType.PlantTypeName</h3>
+            <span class="desktop-plant-text111">
+                <span>Опис рослини:</span>
+            </span>
+            <h1 class="desktop-plant-text109">@plant.PlantDescription</h1>
+            <span class="desktop-plant-text113">
+                <span>Дата останнього поливу:</span>
+            </span>
+            <span class="desktop-plant-text115">
+                <span>@plant.DateLastWatering.ToString("dd.MM.yyyy")</span>
+            </span>
+            <span class="desktop-plant-text117">
+                <span>Дата останньої пересадки:</span>
+            </span>
+            <span class="desktop-plant-text119">
+                <span>@plant.DateLastTransplant.ToString("dd.MM.yyyy")</span>
+            </span>
+        </div>
+
+        <div class="desktop-plant-group1401">
+            <span class="desktop-plant-text123">
+                <span>Частота поливу:</span>
+            </span>
+            <span class="desktop-plant-text125">
+                <span>@plantType.WateringFrequency</span>
+            </span>
+            <span class="desktop-plant-text135">
+                <span>Частота трансплантації:</span>
+            </span>
+            <span class="desktop-plant-text127">
+                <span>@plantType.TransplantFrequency</span>
+            </span>
+            <span class="desktop-plant-text133">
+                <span>Температурні вимоги:</span>
+            </span>
+            <span class="desktop-plant-text129">
+                <span>@plantType.TemperatureRequirements</span>
+            </span>
+            <span class="desktop-plant-text121">
+                <span>Тип грунту:</span>
+            </span>
+            <span class="desktop-plant-text131">
+                <span>@plantType.SoilType</span>
+            </span>
+        </div>
+        <span class="desktop-plant-text137">@plantType.PlantDescription</span>
+
+        <NavLink href="@($"updatePlant/{plant.PlantID}")" class="desktop-plant-group23">
+            <span class="desktop-plant-text101"><span>Редагувати</span></span>
+        </NavLink>
+
+        <NavLink href="@($"deletePlant/{plant.PlantID}")" class="desktop-plant-group1403">
+            <span class="desktop-plant-text101"><span>Видалити</span></span>
+        </NavLink>
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public int PlantId { get; set; }
+
+    private PlantDto plant;
+    private PlantTypeDto plantType;
+
+    protected override async Task OnInitializedAsync()
+    {
+        plant = await PlantService.GetPlantById(PlantId);
+        var plantTypeId = plant.PlantTypeID;
+        plantType = await PlantTypeService.GetPlantTypeById(plantTypeId);
+    }
+
+}

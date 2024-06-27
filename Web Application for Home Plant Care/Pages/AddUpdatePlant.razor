@@ -1,0 +1,126 @@
+﻿@page "/addPlant"
+@page "/updatePlant/{plantId:int?}"
+@using HomePlantCareModels.Dtos
+@using Web_Application_for_Home_Plant_Care.Services.Contracts
+@inject IPlantService PlantService
+@inject IPlantTypeService PlantTypeService
+@inject NavigationManager Navigation
+
+<div class="desktop-add-plant-group1392">
+    <span class="desktop-add-plant-text135">
+        <span>@(plantId == null ? "Нова рослина" : "Редагування")</span>
+    </span>
+    <img src="svg/vector11126-n251h.svg" alt="Vector11747" class="desktop-add-plant-vector1" />
+    <img src="svg/vector21126-u7zr.svg" alt="Vector21747" class="desktop-add-plant-vector2" />
+</div>
+
+<div class="desktop-add-plant-group1404">
+    @if (plantTypes == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <EditForm Model="@newPlant" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+
+            <div class="desktop-add-plant-name-plant3">
+                <label class="desktop-add-plant-text130" for="plantName">Назва рослини</label>
+                <InputText id="plantName" class="desktop-add-plant-inputfield4" @bind-Value="newPlant.PlantName" />
+                <ValidationMessage For="@(() => newPlant.PlantName)" class="validation-message" />
+            </div>
+
+            <div class="desktop-add-plant-dropdowns">
+                <label class="desktop-add-plant-text130" for="plantTypeID">Вид рослини</label>
+                <InputSelect id="plantTypeID" class="desktop-add-plant-inputfield4" @bind-Value="newPlant.PlantTypeID">
+                    <option value="0"></option>
+                    @foreach (var plantType in plantTypes)
+                    {
+                        <option value="@plantType.PlantTypeID">@plantType.PlantTypeName</option>
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => newPlant.PlantTypeID)" class="validation-message" />
+            </div>
+
+            <div class="desktop-add-plant-name-plant2">
+                <label class="desktop-add-plant-text130" for="plantDescription">Опис рослини</label>
+                <InputTextArea id="plantDescription" class="desktop-add-plant-inputfield4" @bind-Value="newPlant.PlantDescription" />
+                <ValidationMessage For="@(() => newPlant.PlantDescription)" class="validation-message" />
+            </div>
+
+            <div class="desktop-add-plant-name-plant1">
+                <label class="desktop-add-plant-text130" for="dateLastWatering">Дата останнього поливу</label>
+                <InputDate id="dateLastWatering" class="desktop-add-plant-inputfield4" @bind-Value="newPlant.DateLastWatering" />
+                <ValidationMessage For="@(() => newPlant.DateLastWatering)" class="validation-message" />
+            </div>
+
+            <div class="desktop-add-plant-name-plant">
+                <label class="desktop-add-plant-text130" for="dateLastTransplant">Дата останньої пересадки</label>
+                <InputDate id="dateLastTransplant" class="desktop-add-plant-inputfield4" @bind-Value="newPlant.DateLastTransplant" />
+                <ValidationMessage For="@(() => newPlant.DateLastTransplant)" class="validation-message" />
+            </div>
+
+            <div class="desktop-add-plant-group23">
+                <button type="submit" class="desktop-add-plant-text137">Зберегти</button>
+            </div>
+
+            <div class="desktop-add-plant-group1403">
+                <button type="reset" class="desktop-add-plant-text137">Скинути</button>
+            </div>
+        </EditForm>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public int? plantId { get; set; }
+
+    private CreatePlantDto newPlant = new CreatePlantDto
+    {
+        DateLastWatering = DateTime.Today,
+        DateLastTransplant = DateTime.Today
+    };
+
+    private IEnumerable<PlantTypeDto>? plantTypes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        plantTypes = await PlantTypeService.GetPlantTypes();
+
+        if (plantId.HasValue)
+        {
+            var existingPlant = await PlantService.GetPlantById(plantId.Value);
+            if (existingPlant != null)
+            {
+                newPlant = new CreatePlantDto
+                    {
+                        PlantName = existingPlant.PlantName,
+                        PlantTypeID = existingPlant.PlantTypeID,
+                        PlantDescription = existingPlant.PlantDescription,
+                        DateLastWatering = existingPlant.DateLastWatering,
+                        DateLastTransplant = existingPlant.DateLastTransplant
+                    };
+            }
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        try
+        {
+            if (plantId.HasValue)
+            {
+                await PlantService.UpdatePlant(plantId.Value, newPlant);
+            }
+            else
+            {
+                await PlantService.AddPlant(newPlant);
+            }
+            Navigation.NavigateTo("/plants");
+        }
+        catch (Exception)
+        {
+            
+        }
+    }
+}

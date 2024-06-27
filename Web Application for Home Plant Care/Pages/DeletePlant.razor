@@ -1,0 +1,40 @@
+﻿@page "/deletePlant/{plantId:int}"
+@using HomePlantCareModels.Dtos;
+@using Web_Application_for_Home_Plant_Care.Services.Contracts;
+@inject IPlantService PlantService
+@inject NavigationManager Navigation
+
+<div class="modal fade show" tabindex="-1" style="display:block; background-color: rgba(0,0,0,0.5);" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ви впевнені, що хочете видалити цю рослину?</h5>
+                <button type="button" class="btn-close" @onclick="Cancel" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Це призведе до видалення запису. Після видалення його не можна буде відновити.</p>
+                <p>Бажаєте продовжити?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @onclick="Cancel">Скасувати</button>
+                <button type="button" class="btn btn-danger" @onclick="ConfirmDelete">Видалити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int PlantId { get; set; }
+
+    private async Task ConfirmDelete()
+    {
+        await PlantService.DeletePlant(PlantId);
+        Navigation.NavigateTo("/plants");
+    }
+
+    private void Cancel()
+    {
+        Navigation.NavigateTo($"/plant/{PlantId}");
+    }
+}

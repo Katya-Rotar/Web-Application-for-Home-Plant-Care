@@ -9,6 +9,7 @@
         public int TransplantFrequency { get; set; }
         public string TemperatureRequirements { get; set; }
         public string SoilType { get; set; }
+        public string PlantDescription { get; set; }
         public ICollection<Plant> Plants { get; set; }
     }
 }

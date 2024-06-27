@@ -452,3 +452,420 @@
     height: 43px;
     position: absolute;
 }
+
+
+
+.desktop-plant-group30 {
+    top: 0px;
+    left: 40px;
+    width: 855px;
+    height: 973px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+}
+
+.desktop-plant-rectangle9 {
+    top: 82px;
+    left: 40px;
+    width: 815px;
+    height: 891px;
+    position: absolute;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 92px;
+}
+
+.desktop-plant-photo {
+    top: 0px;
+    left: 0px;
+    width: 447px;
+    height: 447px;
+    position: absolute;
+}
+
+.desktop-plant-group1402 {
+    top: 139px;
+    left: 447px;
+    width: 376px;
+    height: 301px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+}
+
+.desktop-plant-text107 {
+    color: rgba(128, 197, 110, 1);
+    width: 377px;
+    height: auto;
+    position: absolute;
+    font-size: 30px;
+    text-align: left;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.desktop-plant-text105 {
+    top: 44px;
+    left: 1px;
+    color: rgba(255, 255, 255, 1);
+    height: auto;
+    position: absolute;
+    font-size: 25px;
+    font-style: italic;
+    text-align: left;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.desktop-plant-text109, .desktop-plant-text115, .desktop-plant-text119, .desktop-plant-text125, .desktop-plant-text127, .desktop-plant-text129, .desktop-plant-text131 {
+    color: rgba(255, 255, 255, 1);
+    height: auto;
+    position: absolute;
+    font-size: 16px;
+    font-style: italic;
+    text-align: left;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+.desktop-plant-text109 {
+    top: 120px;
+    width: 360px;
+}
+.desktop-plant-text115 {
+    top: 214px;
+}
+.desktop-plant-text119 {
+    top: 282px;
+}
+.desktop-plant-text125 {
+    top: 30px;
+    width: 152px;
+}
+.desktop-plant-text127 {
+    top: 98px;
+    width: 133px;
+}
+.desktop-plant-text129 {
+    top: 166px;
+    width: 70px;
+}
+.desktop-plant-text131 {
+    top: 234px;
+    width: 122px;
+}
+
+
+.desktop-plant-text111, .desktop-plant-text113, .desktop-plant-text117, .desktop-plant-text121, .desktop-plant-text123, .desktop-plant-text133, .desktop-plant-text135 {
+    color: rgba(255, 255, 255, 1);
+    height: auto;
+    position: absolute;
+    font-size: 20px;
+    text-align: left;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+.desktop-plant-text111 {
+    top: 90px;
+}
+.desktop-plant-text113 {
+    top: 181px;
+}
+.desktop-plant-text117 {
+    top: 249px;
+}
+.desktop-plant-text121 {
+    top: 204px;
+    width: 177px;
+}
+.desktop-plant-text123 {
+    width: 253px;
+}
+.desktop-plant-text133 {
+    top: 136px;
+    width: 343px;
+}
+.desktop-plant-text135 {
+    top: 68px;
+    width: 377px;
+}
+
+
+.desktop-plant-group1401 {
+    top: 483px;
+    left: 447px;
+    width: 377px;
+    height: 253px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+}
+
+.desktop-plant-text137 {
+    top: 483px;
+    left: 70px;
+    color: rgba(255, 255, 255, 1);
+    width: 316px;
+    height: auto;
+    position: absolute;
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.desktop-plant-group23, .desktop-plant-group1403 {
+    bottom: 40px;
+    width: 139px;
+    height: 41px;
+    display: flex;
+    opacity: 0.75;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    border-radius: 12px;
+}
+.desktop-plant-group23 {
+    left: 657px;
+    background-color: rgba(128, 197, 110, 1);
+}
+
+.desktop-plant-text101 {
+    top: 8px;
+    left: 10px;
+    color: rgba(255, 255, 255, 1);
+    width: 120px;
+    height: auto;
+    position: absolute;
+    font-size: 18px;
+    text-align: center;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.desktop-plant-group1403 {
+    left: 466px;
+    background-color: rgba(234, 143, 61, 1);
+}
+
+
+
+
+
+.desktop-add-plant-group1404 {
+    top: 132px;
+    left: 220px;
+    width: 570px;
+    height: 665px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+}
+
+.desktop-add-plant-group1392 {
+    top: 35px;
+    left: 345px;
+    width: 329px;
+    height: 61px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+}
+
+.desktop-add-plant-text135 {
+    top: 15px;
+    left: 77px;
+    color: rgba(255, 255, 255, 1);
+    height: auto;
+    position: absolute;
+    font-size: 25px;
+    box-shadow: 0px 100px 80px 0px rgba(0, 0, 0, 0.36000001430511475);
+    text-align: left;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.desktop-add-plant-vector1 {
+    top: 0px;
+    right: 0px;
+    width: 42px;
+    height: 42px;
+    position: absolute;
+}
+
+.desktop-add-plant-vector2 {
+    top: 18px;
+    left: 0px;
+    width: 42px;
+    height: 43px;
+    position: absolute;
+}
+
+.desktop-add-plant-name-plant3, .desktop-add-plant-dropdowns {
+    gap: 8px;
+    left: 0px;
+    display: flex;
+    position: absolute;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.desktop-add-plant-name-plant3 {
+    top: 0px;
+}
+
+.desktop-add-plant-text130 {
+    color: rgba(102, 102, 102, 1);
+    height: auto;
+    font-size: 16px;
+    align-self: stretch;
+    text-align: left;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 18px;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.desktop-add-plant-inputfield4 {
+    gap: 10px;
+    width: 570px;
+    display: flex;
+    padding: 16px;
+    align-self: stretch;
+    align-items: flex-start;
+    border-color: rgba(204, 204, 204, 1);
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    flex-direction: column;
+}
+
+.desktop-add-plant-dropdowns {
+    top: 104px;
+}
+
+.desktop-add-plant-name-plant2 {
+    gap: 8px;
+    top: 216px;
+    left: 0px;
+    display: flex;
+    position: absolute;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.desktop-add-plant-name-plant1 {
+    gap: 8px;
+    top: 328px;
+    left: 0px;
+    display: flex;
+    position: absolute;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.desktop-add-plant-name-plant {
+    gap: 8px;
+    top: 440px;
+    left: 0px;
+    display: flex;
+    position: absolute;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.desktop-add-plant-group23 {
+    top: 560px;
+    left: 400px;
+    width: 139px;
+    height: 35px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    border-radius: 12px;
+    background-color: rgba(128, 197, 110, 1);
+}
+
+.desktop-add-plant-text137 {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+
+    top: 8px;
+    left: 10px;
+    color: rgba(255, 255, 255, 1);
+    width: 120px;
+    height: auto;
+    position: absolute;
+    font-size: 18px;
+    text-align: center;
+    font-family: Inter;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
+}
+
+.desktop-add-plant-group1403 {
+    top: 560px;
+    right: 400px;
+    width: 139px;
+    height: 35px;
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    flex-shrink: 1;
+    border-radius: 12px;
+    background-color: rgba(234, 143, 61, 1);
+}
+
+.validation-message {
+    color: red;
+    height: auto;
+    font-size: 16px;
+    align-self: stretch;
+    text-align: right;
+    font-family: Inter;
+    font-weight: 500;
+    line-height: 18px;
+    font-stretch: normal;
+    text-decoration: none;
+}

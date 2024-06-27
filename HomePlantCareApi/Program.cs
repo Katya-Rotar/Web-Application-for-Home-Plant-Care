@@ -17,6 +17,7 @@ builder.Services.AddDbContextPool<PlantDbContext>(options =>
 
 builder.Services.AddScoped<IPlantRepository, PlantRepository>();
 builder.Services.AddScoped<IReminderRepository, ReminderRepository>();
+builder.Services.AddScoped<IPlantTypeRepository, PlantTypeRepository>();
 
 var app = builder.Build();
 

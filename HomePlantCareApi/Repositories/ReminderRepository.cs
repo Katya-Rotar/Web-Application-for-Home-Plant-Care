@@ -13,10 +13,16 @@ namespace HomePlantCareApi.Repositories
         }
         public async Task<IEnumerable<Reminder>> GetReminders()
         {
-            var reminder = await this.plantDbContext.Reminders
-                                      .Include(p => p.Plant)
-                                      .ToListAsync();
-            return reminder;
+            var today = DateTime.Today;
+            var twoWeeksFromNow = today.AddDays(14);
+
+            var reminders = await this.plantDbContext.Reminders
+                                     .Include(p => p.Plant)
+                                     .Where(r => r.ReminderDate <= twoWeeksFromNow )
+                                     .OrderBy(r => r.ReminderDate)
+                                     .ToListAsync();
+
+            return reminders;
         }
     }
 }

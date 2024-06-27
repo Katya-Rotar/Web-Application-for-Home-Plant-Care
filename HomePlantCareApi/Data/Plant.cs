@@ -1,7 +1,12 @@
-﻿namespace Web_Application_for_Home_Plant_Care.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace Web_Application_for_Home_Plant_Care.Models
 {
     public class Plant
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PlantID { get; set; }
         public string PlantName { get; set; }
         public int PlantTypeID { get; set; }

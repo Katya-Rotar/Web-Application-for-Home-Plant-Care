@@ -14,6 +14,11 @@ builder.Services.AddHttpClient<IReminderService, ReminderService>(client =>
     client.BaseAddress = new Uri("https://localhost:7133/");
 });
 
+builder.Services.AddHttpClient<IPlantTypeService, PlantTypeService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7133/");
+});
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();

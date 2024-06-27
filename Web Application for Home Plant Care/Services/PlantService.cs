@@ -24,5 +24,57 @@ namespace Web_Application_for_Home_Plant_Care.Services
                 throw;
             }
         }
+
+        public Task<PlantDto> GetPlantById(int id)
+        {
+            try
+            {
+                var plants = httpClient.GetFromJsonAsync<PlantDto>($"api/Plant/{id}");
+                return plants;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task AddPlant(CreatePlantDto plantDto)
+        {
+            try
+            {
+                var response = await httpClient.PostAsJsonAsync("api/Plant", plantDto);
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task UpdatePlant(int id, CreatePlantDto plantDto)
+        {
+            try
+            {
+                var response = await httpClient.PutAsJsonAsync($"api/Plant/{id}", plantDto);
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task DeletePlant(int id)
+        {
+            try
+            {
+                var response = await httpClient.DeleteAsync($"api/Plant/{id}");
+                response.EnsureSuccessStatusCode();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

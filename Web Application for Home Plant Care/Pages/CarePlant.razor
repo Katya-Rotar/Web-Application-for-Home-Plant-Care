@@ -1,0 +1,53 @@
+﻿@page "/carePlant"
+@using HomePlantCareModels.Dtos;
+@using Web_Application_for_Home_Plant_Care.Models;
+@using Web_Application_for_Home_Plant_Care.Services.Contracts;
+@inject IPlantCareService PlantCareService;
+@inject IPlantService PlantService;
+
+<div class="desktop-plant-care-group1392">
+    <span class="desktop-plant-care-text101">
+        <span>Догляд за рослинами</span>
+    </span>
+    <img src="svg/vector11126-n251h.svg" alt="Vector11747" class="desktop-plants-vector1" />
+    <img src="svg/vector21126-u7zr.svg" alt="Vector21747" class="desktop-plants-vector2" />
+</div>
+
+@if (plantCare == null || plantNames == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="desktop-plant-care-container">
+        @foreach (var plant in plantCare)
+        {
+            <div class="desktop-plant-care-frame4273196191">
+                <span class="desktop-plant-care-text113">@plantNames[plant.PlantID]</span>
+                <span class="desktop-plant-care-text111">@plant.CareType</span>
+                <span class="desktop-plant-care-text109">@plant.CareDate.ToString("dd.MM.yyyy")</span>
+            </div>
+        }
+    </div>
+}
+
+
+@code {
+    private IEnumerable<PlantCareDto>? plantCare;
+    private Dictionary<int, string>? plantNames;
+
+    protected override async Task OnInitializedAsync()
+    {
+        plantCare = await PlantCareService.GetPlantCares();
+        plantNames = new Dictionary<int, string>();
+
+        foreach (var careItem in plantCare)
+        {
+            if (!plantNames.ContainsKey(careItem.PlantID))
+            {
+                var plant = await PlantService.GetPlantById(careItem.PlantID);
+                plantNames[careItem.PlantID] = plant.PlantName;
+            }
+        }
+    }
+}

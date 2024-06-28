@@ -1,20 +1,19 @@
 ﻿@using HomePlantCareModels.Dtos;
-@using Web_Application_for_Home_Plant_Care.Models
-@using Web_Application_for_Home_Plant_Care.Services
 @using Web_Application_for_Home_Plant_Care.Services.Contracts;
-@inject IReminderService ReminderService
+@inject IReminderService ReminderService;
+@inject IPlantService PlantService;
 
 <div class="desktop-home-frame427319615">
     <span class="desktop-home-text091">
         <span>Догляд за рослинами</span>
     </span>
-    <NavLink href="" class="desktop-home-text093">
-        <span>більше</span>
+    <NavLink href="/carePlant">
+        <h1 class="desktop-home-text093">більше</h1>
     </NavLink>
 </div>
 
 <div class="desktop-home-frame427319616">
-    @if (reminder == null)
+    @if (reminder == null || plantNames == null)
     {
         <p>Loading...</p>
     }
@@ -23,12 +22,15 @@
         @foreach (var reminders in reminder)
         {
             <div class="desktop-home-frame427319619">
-                <span class="desktop-home-text099"><span>@reminders.PlantName</span></span>
-                <span class="desktop-home-text097"><span>@reminders.ReminderType</span></span>
+                <span class="desktop-home-text099">
+                    <span>@plantNames[reminders.PlantID]</span>
+                </span>
+                <span class="desktop-home-text097">
+                    <span>@reminders.ReminderType</span>
+                </span>
                 <span class="desktop-home-text095">
                     <span>@reminders.ReminderDate.ToString("dd.MM.yyyy")</span>
                 </span>
-
             </div>
         }
     }
@@ -36,9 +38,20 @@
 
 @code {
     private IEnumerable<ReminderDto>? reminder;
+    private Dictionary<int, string>? plantNames;
 
     protected override async Task OnInitializedAsync()
     {
         reminder = await ReminderService.GetReminders();
+        plantNames = new Dictionary<int, string>();
+
+        foreach (var reminderItem in reminder)
+        {
+            if (!plantNames.ContainsKey(reminderItem.PlantID))
+            {
+                var plant = await PlantService.GetPlantById(reminderItem.PlantID);
+                plantNames[reminderItem.PlantID] = plant.PlantName;
+            }
+        }
     }
 }

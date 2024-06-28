@@ -10,7 +10,6 @@ namespace HomePlantCareModels.Dtos
     {
         public int ReminderID { get; set; }
         public int PlantID { get; set; }
-        public string PlantName { get; set; }
         public DateTime ReminderDate { get; set; }
         public string ReminderType { get; set; }
         public bool IsCompleted { get; set; }

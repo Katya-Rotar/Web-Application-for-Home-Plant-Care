@@ -2,6 +2,7 @@
 using HomePlantCareApi.Repositories.Contract;
 using HomePlantCareModels.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using Web_Application_for_Home_Plant_Care.Models;
 
 namespace HomePlantCareApi.Controllers
 {
@@ -10,10 +11,14 @@ namespace HomePlantCareApi.Controllers
     public class PlantController : ControllerBase
     {
         private readonly IPlantRepository plantRepository;
+        private readonly IReminderRepository reminderRepository;
+        private readonly IPlantTypeRepository plantTypeRepository;
 
-        public PlantController(IPlantRepository plantRepository)
+        public PlantController(IPlantRepository plantRepository, IReminderRepository reminderRepository, IPlantTypeRepository plantTypeRepository)
         {
             this.plantRepository = plantRepository;
+            this.reminderRepository = reminderRepository;
+            this.plantTypeRepository = plantTypeRepository;
         }
 
         [HttpGet]
@@ -63,6 +68,7 @@ namespace HomePlantCareApi.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         public async Task<ActionResult> AddPlant(CreatePlantDto plantDto)
         {
             if (plantDto == null || !ModelState.IsValid)
@@ -76,6 +82,42 @@ namespace HomePlantCareApi.Controllers
 
                 var createdPlantDto = plant.ConvertToPlantIdDto();
 
+                // Отримати тип рослини для частоти поливу та пересадки
+                var plantType = await this.plantTypeRepository.GetPlantTypeById(plant.PlantTypeID);
+
+                if (plantType == null)
+                {
+                    return NotFound($"PlantType with ID {plant.PlantTypeID} not found.");
+                }
+
+                if (plant.DateLastWatering == null)
+                {
+                    return BadRequest("DateLastWatering cannot be null.");
+                }
+
+                if (plant.DateLastTransplant == null)
+                {
+                    return BadRequest("DateLastTransplant cannot be null.");
+                }
+
+                // Створити нагадування про полив
+                var wateringReminder = new Reminder
+                {
+                    PlantID = plant.PlantID,
+                    ReminderDate = plant.DateLastWatering.AddDays(plantType.WateringFrequency),
+                    ReminderType = "Полив"
+                };
+                await this.reminderRepository.AddReminder(wateringReminder);
+
+                // Створити нагадування про пересадку
+                var transplantReminder = new Reminder
+                {
+                    PlantID = plant.PlantID,
+                    ReminderDate = plant.DateLastTransplant.AddDays(plantType.TransplantFrequency),
+                    ReminderType = "Пересадка"
+                };
+                await this.reminderRepository.AddReminder(transplantReminder);
+
                 return CreatedAtAction(nameof(GetById), new { id = plant.PlantID }, createdPlantDto);
             }
             catch (Exception ex)
@@ -83,6 +125,8 @@ namespace HomePlantCareApi.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdatePlant(int id, CreatePlantDto plantDto)

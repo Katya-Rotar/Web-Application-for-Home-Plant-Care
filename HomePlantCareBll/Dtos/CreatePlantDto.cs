@@ -4,6 +4,7 @@ namespace HomePlantCareModels.Dtos
 {
     public class CreatePlantDto
     {
+        public int PlantID { get; set; }
 
         [Required(ErrorMessage = "Назва рослини обов'язкова")]
         public string PlantName { get; set; }

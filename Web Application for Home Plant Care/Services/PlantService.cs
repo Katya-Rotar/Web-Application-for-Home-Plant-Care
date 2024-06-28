@@ -42,14 +42,37 @@ namespace Web_Application_for_Home_Plant_Care.Services
         {
             try
             {
+                // Додати рослину
                 var response = await httpClient.PostAsJsonAsync("api/Plant", plantDto);
                 response.EnsureSuccessStatusCode();
+
+                // Отримати тип рослини для отримання частот поливу та пересадки
+                var plantType = await httpClient.GetFromJsonAsync<PlantTypeDto>($"api/PlantType/{plantDto.PlantTypeID}");
+
+                // Створити нагадування про полив
+                var wateringReminder = new ReminderDto
+                {
+                    PlantID = plantDto.PlantID,
+                    ReminderDate = plantDto.DateLastWatering.AddDays(plantType.WateringFrequency),
+                    ReminderType = "Watering"
+                };
+                await httpClient.PostAsJsonAsync("api/Reminder", wateringReminder);
+
+                // Створити нагадування про пересадку
+                var transplantReminder = new ReminderDto
+                {
+                    PlantID = plantDto.PlantID,
+                    ReminderDate = plantDto.DateLastTransplant.AddDays(plantType.TransplantFrequency),
+                    ReminderType = "Transplant"
+                };
+                await httpClient.PostAsJsonAsync("api/Reminder", transplantReminder);
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
 
         public async Task UpdatePlant(int id, CreatePlantDto plantDto)
         {

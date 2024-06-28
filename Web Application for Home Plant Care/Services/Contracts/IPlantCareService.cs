@@ -7,7 +7,7 @@ namespace Web_Application_for_Home_Plant_Care.Services.Contracts
     {
         Task<IEnumerable<PlantCareDto>> GetPlantCares();
         Task<PlantCareDto> GetPlantCareById(int id);
-        Task AddPlantCare(PlantCareDto plantDto);
+        Task AddPlantCare(ReminderDto reminder);
         Task UpdatePlantCare(int id, PlantCareDto plantDto);
         Task DeletePlantCare(int id);
     }

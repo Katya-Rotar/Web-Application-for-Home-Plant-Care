@@ -68,7 +68,6 @@ namespace HomePlantCareApi.Controllers
         }
 
         [HttpPost]
-        [HttpPost]
         public async Task<ActionResult> AddPlant(CreatePlantDto plantDto)
         {
             if (plantDto == null || !ModelState.IsValid)

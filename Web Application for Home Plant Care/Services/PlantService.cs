@@ -74,6 +74,7 @@ namespace Web_Application_for_Home_Plant_Care.Services
         }
 
 
+
         public async Task UpdatePlant(int id, CreatePlantDto plantDto)
         {
             try
@@ -99,5 +100,57 @@ namespace Web_Application_for_Home_Plant_Care.Services
                 throw;
             }
         }
+
+        public async Task UpdateLastWateringDate(int plantId, DateTime date)
+        {
+            try
+            {
+                var plant = await GetPlantById(plantId);
+                plant.DateLastWatering = date;
+
+                var plantDto = new CreatePlantDto
+                {
+                    PlantID = plant.PlantID,
+                    PlantName = plant.PlantName,
+                    PlantTypeID = plant.PlantTypeID,
+                    DateLastWatering = plant.DateLastWatering,
+                    DateLastTransplant = plant.DateLastTransplant
+                };
+
+                await UpdatePlant(plantId, plantDto);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating plant watering date: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task UpdateLastTransplantDate(int plantId, DateTime date)
+        {
+            try
+            {
+                var plant = await GetPlantById(plantId);
+                plant.DateLastTransplant = date;
+
+                var plantDto = new CreatePlantDto
+                {
+                    PlantID = plant.PlantID,
+                    PlantName = plant.PlantName,
+                    PlantTypeID = plant.PlantTypeID,
+                    DateLastWatering = plant.DateLastWatering,
+                    DateLastTransplant = plant.DateLastTransplant
+                };
+
+                await UpdatePlant(plantId, plantDto);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating plant transplant date: {ex.Message}");
+                throw;
+            }
+        }
+
+
     }
 }

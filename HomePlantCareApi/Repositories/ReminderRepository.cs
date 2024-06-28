@@ -18,7 +18,7 @@ namespace HomePlantCareApi.Repositories
 
             var reminders = await this.plantDbContext.Reminders
                                      .Include(p => p.Plant)
-                                     .Where(r => r.ReminderDate <= twoWeeksFromNow )
+                                     
                                      .OrderBy(r => r.ReminderDate)
                                      .ToListAsync();
 

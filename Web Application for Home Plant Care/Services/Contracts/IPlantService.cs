@@ -9,5 +9,7 @@ namespace Web_Application_for_Home_Plant_Care.Services.Contracts
         Task AddPlant(CreatePlantDto plantDto);
         Task UpdatePlant(int id, CreatePlantDto plantDto);
         Task DeletePlant(int id);
+        Task UpdateLastWateringDate(int plantID, DateTime today);
+        Task UpdateLastTransplantDate(int plantID, DateTime today);
     }
 }

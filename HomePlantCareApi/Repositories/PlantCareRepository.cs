@@ -16,6 +16,7 @@ namespace HomePlantCareApi.Repositories
         {
             var plantCare = await this.plantDbContext.PlantCares
                                                      .Include(p => p.Plant)
+                                                     .OrderByDescending(r => r.CareDate)
                                                      .ToListAsync();
             return plantCare;
         }

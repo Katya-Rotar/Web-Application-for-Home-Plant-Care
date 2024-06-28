@@ -942,3 +942,28 @@
 }
 
 
+
+.desktop-plant-care-rectangle41 {
+    top: 0px;
+    left: 0px;
+    width: 8px;
+    height: 76px;
+    z-index: 2;
+    position: absolute;
+    border-radius: 100px 0 0 12px;
+}
+
+.desktop-plant-care-ellipse307 {
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    position: absolute;
+    top: 25%;
+    right: 15px;
+    background-color: rgb(34.5%,34.5%,34.5%);
+    border-radius: 20px;
+}
+
+.desktop-plant-care-ellipse307.overdue {
+    background-color: rgb(91.8%,56.1%,23.9%);
+}

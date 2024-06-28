@@ -2,6 +2,7 @@
 @using Web_Application_for_Home_Plant_Care.Services.Contracts;
 @inject IReminderService ReminderService;
 @inject IPlantService PlantService;
+@inject IPlantCareService PlantCareService
 
 <div class="desktop-home-frame427319615">
     <span class="desktop-home-text091">
@@ -22,6 +23,9 @@
         @foreach (var reminders in reminder)
         {
             <div class="desktop-home-frame427319619">
+                <img src="@GetImageSrc(reminders)"
+                     alt="Rectangle412411"
+                     class="desktop-plant-care-rectangle41" />
                 <span class="desktop-home-text099">
                     <span>@plantNames[reminders.PlantID]</span>
                 </span>
@@ -31,6 +35,8 @@
                 <span class="desktop-home-text095">
                     <span>@reminders.ReminderDate.ToString("dd.MM.yyyy")</span>
                 </span>
+                <button class="@GetEllipseClass(reminders)" @onclick="@(() => AddPlantCare(reminders))">
+                </button>
             </div>
         }
     }
@@ -52,6 +58,58 @@
                 var plant = await PlantService.GetPlantById(reminderItem.PlantID);
                 plantNames[reminderItem.PlantID] = plant.PlantName;
             }
+        }
+    }
+
+    private async Task AddPlantCare(ReminderDto reminder)
+    {
+        await PlantCareService.AddPlantCare(reminder);
+        await LoadData();
+        StateHasChanged(); // Оновлення стану компоненту
+    }
+
+    private async Task LoadData()
+    {
+        reminder = await ReminderService.GetReminders();
+        plantNames = new Dictionary<int, string>();
+
+        foreach (var reminderItem in reminder)
+        {
+            if (!plantNames.ContainsKey(reminderItem.PlantID))
+            {
+                var plant = await PlantService.GetPlantById(reminderItem.PlantID);
+                plantNames[reminderItem.PlantID] = plant.PlantName;
+            }
+        }
+    }
+
+    // Method to get the image source based on conditions
+    private string GetImageSrc(ReminderDto reminder)
+    {
+        var today = DateTime.Today;
+
+        if (reminder.ReminderDate < today && !reminder.IsCompleted)
+        {
+            return "images/rectangle412411-bdud-200w.png";
+        }
+        else
+        {
+            return "images/rectangle412411-mm9x-200w.png";
+        }
+    }
+
+    // Method to get the class for the ellipse element based on conditions
+    private string GetEllipseClass(ReminderDto reminder)
+    {
+        var today = DateTime.Today;
+
+        if (reminder.ReminderDate < today && !reminder.IsCompleted)
+        {
+            return "desktop-plant-care-ellipse307 overdue";
+        }
+        else
+        {
+            return "desktop-plant-care-ellipse307";
         }
     }
 }
